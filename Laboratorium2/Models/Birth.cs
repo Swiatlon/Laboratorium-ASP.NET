@@ -17,15 +17,10 @@
                 DateTime currentDate = DateTime.Now;
                 int age = currentDate.Year - DateOfBirth.Value.Year;
 
-                if (DateOfBirth.Value.Date > currentDate.AddYears(-age))
-                {
-                    age--;
-                }
-
                 return age;
             }
 
-            return 0; // Or handle the case where DateOfBirth is null
+            return 0; 
         }
     }
 }
