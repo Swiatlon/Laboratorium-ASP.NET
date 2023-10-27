@@ -2,22 +2,30 @@
 {
     public class Birth
     {
-        public string? Name { get; set; }
-        public DateTime? Date { get; }
+        public string Name { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
-        public bool? isValid()
+        public bool IsValid()
         {
-            DateTime now = DateTime.Today;
-            return Name != null && Date != null  && Date < now;
+            return !string.IsNullOrEmpty(Name) && DateOfBirth.HasValue && DateOfBirth < DateTime.Now;
         }
 
-        public double getAge()
+        public int CalculateAge()
         {
-            DateTime now = DateTime.Today;
-            int age = now.Year - Date
-            if (DOB > now.AddYears(-age)) age--;
-            return age;
-            return Name -
+            if (DateOfBirth.HasValue)
+            {
+                DateTime currentDate = DateTime.Now;
+                int age = currentDate.Year - DateOfBirth.Value.Year;
+
+                if (DateOfBirth.Value.Date > currentDate.AddYears(-age))
+                {
+                    age--;
+                }
+
+                return age;
+            }
+
+            return 0; // Or handle the case where DateOfBirth is null
         }
     }
 }

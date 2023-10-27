@@ -14,7 +14,6 @@ namespace Laboratorium2.Controllers
             return View();
         }
 
-        // @@@ACTION Calculator
         public IActionResult Result(Calculator model)
         {
             if ((bool)!model.isValid())

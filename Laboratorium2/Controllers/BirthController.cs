@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Laboratorium2.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Laboratorium2.Controllers
 {
@@ -9,11 +10,17 @@ namespace Laboratorium2.Controllers
             return View();
         }
 
+        public IActionResult Form()
+        {
+            return View();
+        }
+
         public IActionResult Result(Birth model)
         {
-            if ((bool)!model.isValid())
+            if ((bool)!model.IsValid())
             {
-                return BadRequest();
+                ViewData["Message"] = "Wrong format data!";
+                return View("error");
             }
 
             return View(model);
