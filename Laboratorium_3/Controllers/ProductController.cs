@@ -1,39 +1,42 @@
 ﻿using Laboratorium_3.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Laboratorium_3.Controllers
 {
     public class ProductController : Controller
     {
-        private static List<ProductModel> listaProduktow = new List<ProductModel>
+        private static List<ProductModel> productList = new List<ProductModel>
         {
-            new ProductModel { Id = 1, Nazwa = "Produkt 1", Cena = 10.99m, Producent = "Producent 1", DataProdukcji = DateTime.Now, Opis = "Opis produktu 1" },
-            new ProductModel { Id = 2, Nazwa = "Produkt 2", Cena = 20.99m, Producent = "Producent 2", DataProdukcji = DateTime.Now, Opis = "Opis produktu 2" },
+            new ProductModel { Id = 1, Name = "Product 1", Price = 10.99m, Producer = "Producer 1", ProductionDate = DateTime.Now, Description = "Product 1 description" },
+            new ProductModel { Id = 2, Name = "Product 2", Price = 20.99m, Producer = "Producer 2", ProductionDate = DateTime.Now, Description = "Product 2 description" },
         };
 
-        // GLOWNY WIDOK
+        // MAIN VIEW
         // GET: /Product
         public IActionResult Index()
         {
-            return View(listaProduktow);
+            return View(productList);
         }
 
-        //SZCZEGOLOWE INFORMACJE
+        // DETAILS
         // GET: /Product/Details/1
         public IActionResult Details(int id)
         {
-            // Znajdź produkt o danym id w liście
-            var product = listaProduktow.FirstOrDefault(p => p.Id == id);
+            // Find the product with the given id in the list
+            var product = productList.FirstOrDefault(p => p.Id == id);
 
             if (product == null)
             {
-                return NotFound(); // Produkt o podanym id nie został znaleziony
+                return NotFound(); // Product with the specified id was not found
             }
 
             return View(product);
         }
 
-        // DODAWANIE
+        // ADDING
         // GET: /Product/Create
         [HttpGet]
         public IActionResult Create()
@@ -47,9 +50,9 @@ namespace Laboratorium_3.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Id = listaProduktow.Count + 1;
+                model.Id = productList.Count + 1;
 
-                listaProduktow.Add(model);
+                productList.Add(model);
 
                 return RedirectToAction("Index");
             }
@@ -59,12 +62,12 @@ namespace Laboratorium_3.Controllers
             }
         }
 
-        //EDYCJA
+        // EDITING
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var product = listaProduktow.FirstOrDefault(p => p.Id == id);
+            var product = productList.FirstOrDefault(p => p.Id == id);
 
             if (product == null)
             {
@@ -79,11 +82,11 @@ namespace Laboratorium_3.Controllers
         {
             if (ModelState.IsValid)
             {
-                var index = listaProduktow.FindIndex(p => p.Id == model.Id);
+                var index = productList.FindIndex(p => p.Id == model.Id);
 
                 if (index != -1)
                 {
-                    listaProduktow[index] = model;
+                    productList[index] = model;
                 }
 
                 return RedirectToAction("Index");
@@ -92,21 +95,20 @@ namespace Laboratorium_3.Controllers
             {
                 return View("Edit", model);
             }
-
         }
 
-        //USUWANIE
+        // DELETING
         // GET: /Product/Delete/1
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            // Znajdź produkt o danym id w liście
-            var product = listaProduktow.FirstOrDefault(p => p.Id == id);
+            // Find the product with the given id in the list
+            var product = productList.FirstOrDefault(p => p.Id == id);
 
             if (product == null)
             {
-                return NotFound(); // Produkt o podanym id nie został znaleziony
+                return NotFound(); // Product with the specified id was not found
             }
 
             return View(product);
@@ -116,18 +118,18 @@ namespace Laboratorium_3.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            // Znajdź produkt o danym id w liście
-            var product = listaProduktow.FirstOrDefault(p => p.Id == id);
+            // Find the product with the given id in the list
+            var product = productList.FirstOrDefault(p => p.Id == id);
 
             if (product == null)
             {
-                return NotFound(); // Produkt o podanym id nie został znaleziony
+                return NotFound(); // Product with the specified id was not found
             }
 
-            // Usuń produkt z listy
-            listaProduktow.Remove(product);
+            // Remove the product from the list
+            productList.Remove(product);
 
             return RedirectToAction("Index");
         }
     }
- }
+}
