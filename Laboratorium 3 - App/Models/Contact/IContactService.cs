@@ -1,5 +1,6 @@
-﻿using Laboratorium_3___App.Models;
-    public interface IContactService
+﻿using Models.Contact;
+
+public interface IContactService
 {
     void Add(Contact contact);
     void RemoveById(int id);

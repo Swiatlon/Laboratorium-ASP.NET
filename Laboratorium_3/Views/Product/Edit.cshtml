@@ -1,0 +1,39 @@
+﻿@model Laboratorium_3.Models.ProductModel
+
+<h2>Edit Product</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Nazwa"></label>
+        <input asp-for="Nazwa" class="form-control" />
+        <span asp-validation-for="Nazwa" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cena"></label>
+        <input asp-for="Cena" class="form-control" />
+        <span asp-validation-for="Cena" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Producent"></label>
+        <input asp-for="Producent" class="form-control" />
+        <span asp-validation-for="Producent" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="DataProdukcji"></label>
+        <input asp-for="DataProdukcji" type="date" class="form-control" />
+        <span asp-validation-for="DataProdukcji" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Opis"></label>
+        <textarea asp-for="Opis" class="form-control"></textarea>
+        <span asp-validation-for="Opis" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+</form>

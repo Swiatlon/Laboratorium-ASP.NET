@@ -1,0 +1,47 @@
+﻿@model List<Laboratorium_3.Models.ProductModel>
+
+@{
+    ViewData["Title"] = "Lista Produktów";
+}
+
+<h2>Lista Produktów</h2>
+<p>
+    <a asp-action="Create">Dodaj nowy produkt</a>
+</p>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Cena</th>
+                <th>Producent</th>
+                <th>Data Produkcji</th>
+                <th>Opis</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var produkt in Model)
+            {
+                <tr>
+                    <td>@produkt.Nazwa</td>
+                    <td>@produkt.Cena</td>
+                    <td>@produkt.Producent</td>
+                    <td>@produkt.DataProdukcji.ToShortDateString()</td>
+                    <td>@produkt.Opis</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@produkt.Id">Szczegóły</a> |
+                        <a asp-action="Edit" asp-route-id="@produkt.Id">Edytuj</a> |
+                        <a asp-action="Delete" asp-route-id="@produkt.Id">Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Brak produktów do wyświetlenia.</p>
+}

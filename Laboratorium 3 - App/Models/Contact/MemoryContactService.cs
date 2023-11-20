@@ -1,12 +1,13 @@
-﻿using Laboratorium_3___App.Models;
-    public class MemoryContactService:IContactService
+﻿using Models.Contact;
+
+public class MemoryContactService:IContactService
 {
     private readonly Dictionary<int, Contact> _items = new Dictionary<int, Contact>()
     {
          {1, new Contact() {Id=1, Name="Adam", Email = "adam@wsei.edu.pl", Phone="11223322", Birth = new DateTime()} }
     };
         
-public void Add(Contact contact)
+    public void Add(Contact contact)
     {
         contact.Id = contact.Id + 1;
         _items[contact.Id] = contact;
