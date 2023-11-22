@@ -36,6 +36,7 @@ namespace Laboratorium_4.Models
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Priority is required.")]
+        [Display(Name = "Priority")]
         public Priority Priority { get; set; }
 
     }
