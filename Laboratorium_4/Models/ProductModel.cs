@@ -9,6 +9,9 @@ namespace Laboratorium_4.Models
         [HiddenInput]
         public int Id { get; set; }
 
+        [HiddenInput]
+        public DateTime Created { get; set; } = DateTime.Now;
+
         [Required(ErrorMessage = "Name is required.")]
         [Display(Name = "Name")]
         public string Name { get; set; }

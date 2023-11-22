@@ -9,6 +9,7 @@ namespace Laboratorium_3.Controllers
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
+        private readonly IDateTimeProvider _timeProvider;
 
         public ProductController(IProductService productService)
         {

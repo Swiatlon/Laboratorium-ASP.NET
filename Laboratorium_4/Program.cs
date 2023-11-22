@@ -1,3 +1,5 @@
+using Laboratorium_4.Models;
+
 namespace Laboratorium_4
 {
     public class Program
@@ -9,6 +11,7 @@ namespace Laboratorium_4
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddSingleton<IProductService, MemoryProductService>();
+            builder.Services.AddSingleton<IDateTimeProvider, CurrentDateTimeProvider>();
 
             var app = builder.Build();
 
