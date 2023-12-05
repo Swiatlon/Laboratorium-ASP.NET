@@ -1,3 +1,5 @@
+using System.Xml.Linq;
+
 namespace Laboratorium_3
 {
     public class Program
@@ -5,6 +7,9 @@ namespace Laboratorium_3
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<Data.AppDbContext>();
+            builder.Services.AddTransient<IProductService, EFProductService>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
