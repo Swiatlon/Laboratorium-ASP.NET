@@ -30,6 +30,9 @@ namespace Data.Entities
 
         public DateTime Created { get; set; }
 
+        public int? OrganizationId { get; set; }
+        public OrganizationEntity? Organization { get; set; }
+
         public ProductEntity()
         {
             Created = DateTime.Now;
