@@ -1,8 +1,10 @@
 ﻿using Laboratorium_6.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Laboratorium_6.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;

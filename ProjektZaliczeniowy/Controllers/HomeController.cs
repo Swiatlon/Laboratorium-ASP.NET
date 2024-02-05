@@ -1,9 +1,8 @@
-﻿using Laboratorium_6.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using ProjektZaliczeniowy.Models;
 using System.Diagnostics;
 
-namespace Laboratorium_6.Controllers
+namespace ProjektZaliczeniowy.Controllers
 {
     public class HomeController : Controller
     {
@@ -13,7 +12,7 @@ namespace Laboratorium_6.Controllers
         {
             _logger = logger;
         }
-        [AllowAnonymous]
+
         public IActionResult Index()
         {
             return View();
